@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux'
-import {setSort} from '../redux/slices/filterSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSort } from '../redux/slices/filterSlice';
 
-
-const list = [
+export const sortList = [
 	{ name: 'популярности (DESC)', sortProperty: 'rating' },
 	{ name: 'популярности (ASC)', sortProperty: '-rating' },
 	{ name: 'цене (DESC)', sortProperty: 'price' },
@@ -13,15 +12,13 @@ const list = [
 ];
 
 function Sort() {
-	const dispatch = useDispatch()
-	const sort = useSelector(state => state.filter.sort)
-
+	const dispatch = useDispatch();
+	const sort = useSelector(state => state.filter.sort);
 
 	const [open, setOpen] = useState(false);
 
-
 	const onClickListItems = obj => {
-		dispatch(setSort(obj))
+		dispatch(setSort(obj));
 		setOpen(false);
 	};
 
@@ -46,11 +43,13 @@ function Sort() {
 			{open && (
 				<div className='sort__popup'>
 					<ul>
-						{list.map((obj, i) => (
+						{sortList.map((obj, i) => (
 							<li
 								key={i}
 								onClick={() => onClickListItems(obj)}
-								className={sort.sortProperty === obj.sortProperty ? 'active' : ''}
+								className={
+									sort.sortProperty === obj.sortProperty ? 'active' : ''
+								}
 							>
 								{obj.name}
 							</li>
