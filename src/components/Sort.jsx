@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSort } from '../redux/slices/filterSlice';
 
+<<<<<<< HEAD
 const list = [
+=======
+export const sortList = [
+>>>>>>> 5d6834e72085ac60532df20f1f8736a6c3c1c995
 	{ name: 'популярности (DESC)', sortProperty: 'rating' },
 	{ name: 'популярности (ASC)', sortProperty: '-rating' },
 	{ name: 'цене (DESC)', sortProperty: 'price' },
@@ -14,7 +18,10 @@ const list = [
 function Sort() {
 	const dispatch = useDispatch();
 	const sort = useSelector(state => state.filter.sort);
+<<<<<<< HEAD
 	const sortRef = React.useRef();
+=======
+>>>>>>> 5d6834e72085ac60532df20f1f8736a6c3c1c995
 
 	const [open, setOpen] = useState(false);
 
@@ -57,7 +64,7 @@ function Sort() {
 			{open && (
 				<div className='sort__popup'>
 					<ul>
-						{list.map((obj, i) => (
+						{sortList.map((obj, i) => (
 							<li
 								key={i}
 								onClick={() => onClickListItems(obj)}
